@@ -8,10 +8,15 @@ namespace TestMedStub
 {
     public class Newsletter
     {
+        private IDatabase db;
+        public void SetDatabase(IDatabase value)
+        {
+            db = value;
+        }
+
         public List<String> GetRecipients()
         {
             List<String> result = new();
-            Database db = new();
             var customers = db.GetAllCustomers();
             foreach(Customer c in customers)
             {

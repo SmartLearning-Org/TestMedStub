@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestMedStub
 {
-    class Database
+    class Database : IDatabase
     {
         public List<Customer> GetAllCustomers()
         {
