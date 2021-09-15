@@ -9,9 +9,16 @@ namespace TestMedStub
     public class Newsletter
     {
         private IDatabase db;
+        private IMailService mailService;
+
         public void SetDatabase(IDatabase value)
         {
             db = value;
+        }
+
+        public void SetMailService(IMailService value)
+        {
+            mailService = value;
         }
 
         public List<String> GetRecipients()
@@ -26,6 +33,21 @@ namespace TestMedStub
                 }
             }
             return result;
+        }
+
+        public int SendNewsLetters(List<String> recipients)
+        {
+            int mailsSent = 0;
+            foreach(String recipient in recipients) {
+                mailService.SendMail(recipient, "Nyhedsbrev", "Her er dit nyhedsbrev");
+                mailsSent = mailsSent + 1;
+                if (mailsSent >= 10)
+                {
+                    break;
+                }
+            }
+
+            return mailsSent;
         }
     }
 }

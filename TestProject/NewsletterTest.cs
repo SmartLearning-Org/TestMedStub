@@ -26,6 +26,7 @@ namespace TestProject
             newsletter.SetDatabase(databaseStub.Object);
 
             List<string> list = newsletter.GetRecipients();
+
             Assert.Single(list);
                  
         }
